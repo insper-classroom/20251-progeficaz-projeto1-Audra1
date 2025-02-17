@@ -104,20 +104,22 @@ li.note-container:hover textarea {
     display: flex;
     align-items: flex-start;
     position: relative;
-    padding-left: 24px; /* Space for menu icon */
+    width: 499px;
+    margin: 0 auto;
 }
 
 .menu-trigger {
-    width: 24px;
-    height: 24px;
+    width: 8px;
+    height: 13px;
     position: absolute;
-    left: 0;
-    top: 16px;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 0;
     transition: opacity 0.2s ease;
     cursor: pointer;
     background: url('/static/visual/img/6dots.png') center no-repeat;
-    background-size: 16px;
+    background-size: 8px 13px;
 }
 
 .note-wrapper:hover .menu-trigger {
@@ -127,14 +129,16 @@ li.note-container:hover textarea {
 /* Delete menu popup */
 .delete-menu {
     position: absolute;
-    left: 24px;
-    top: 24px;
+    left: -80px;
+    top: 50%;
+    transform: translateY(-50%);
     background: white;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 2;
+    padding: 4px 0;
 }
 
 .delete-option {
@@ -143,6 +147,7 @@ li.note-container:hover textarea {
     padding: 6px 12px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    white-space: nowrap;
 }
 
 .delete-option:hover {
