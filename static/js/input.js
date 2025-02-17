@@ -3,9 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const descriptionInput = document.getElementById('description-input');
     const inputBox = document.querySelector('.input-box');
     
-
-
-
+    // Add event listener for global Enter key
+    document.addEventListener('keydown', function(e) {
+        // Only focus title input if we're not already in a textarea
+        if (e.key === 'Enter' && 
+            !e.target.matches('textarea') && 
+            document.activeElement !== titleInput) {
+            e.preventDefault();
+            titleInput.focus();
+        }
+    });
 
     titleInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
