@@ -36,5 +36,10 @@ def update_note(note_id):
         )
     return jsonify({'status': 'success'})
 
+@app.route('/delete/<int:note_id>', methods=['POST'])
+def delete_note(note_id):
+    views.delete_note(note_id)
+    return redirect('/')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)

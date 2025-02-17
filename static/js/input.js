@@ -131,8 +131,19 @@ document.addEventListener('DOMContentLoaded', function() {
         option.addEventListener('click', (e) => {
             e.stopPropagation();
             const noteId = option.closest('.note-wrapper').querySelector('.note-container').dataset.noteId;
-            // TODO: Add delete functionality when endpoint is ready
-            console.log('Delete note:', noteId);
+            
+            fetch(`/delete/${noteId}`, {
+                method: 'POST'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error deleting note:', error);
+            });
         });
     });
 });

@@ -27,6 +27,10 @@ def submit(titulo, detalhes):
             (titulo, detalhes)
         )
 
+def delete_note(note_id):
+    with get_db() as db:
+        db.execute('DELETE FROM notes WHERE id = ?', (note_id,))
+
 
 
 
