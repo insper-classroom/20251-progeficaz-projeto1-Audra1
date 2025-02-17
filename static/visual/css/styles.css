@@ -44,6 +44,7 @@
     display: none;
     position: relative;
     z-index: 1;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Note list container */
@@ -93,6 +94,7 @@ li.note-container:hover textarea {
     font-size: 12px;
     line-height: 12px;
     color: #4f4f4f;
+    font-family: 'Inter', sans-serif;
 }
 
 .note-description {
@@ -131,12 +133,12 @@ li.note-container:hover textarea {
     cursor: pointer;
     background: url('/static/visual/img/6dots.png') center no-repeat;
     background-size: 8px 13px;
-    border-radius: 1px;
+    border-radius: 2px;
     transition: background-color 0.2s ease;
 }
 
 .menu-trigger:hover {
-    background-color: rgba(173, 216, 230, 0.3);
+    background-color:   rgba(211, 211, 211, 0.3);
 }
 
 .note-wrapper:hover .menu-trigger,
