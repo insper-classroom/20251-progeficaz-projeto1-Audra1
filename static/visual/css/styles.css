@@ -19,7 +19,7 @@
     height: 39px;
     border: 1px solid #e0e0e0;
     border-radius: 7px;
-    transition: height 0.2s ease;
+    transition: height 0.2s linear;
     background: white;
 }
 
@@ -65,7 +65,7 @@ ul {
     margin: 0 auto;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    transition: all 0.3s ease;
+    transition: all 0.3s linear;
 }
 
 li.note-container:hover,
@@ -76,7 +76,7 @@ li.note-container:hover textarea {
 .note-title,
 .note-details {
     background-color: transparent;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s linear;
 }
 
 .note-content {
@@ -95,19 +95,23 @@ li.note-container:hover textarea {
     line-height: 12px;
     color: #4f4f4f;
     font-family: 'Inter', sans-serif;
-    transition: all 0.3s ease;
+    transition: height 0.2s linear,
+                opacity 0.2s linear,
+                margin-top 0.2s linear;
     height: 0;
     margin-top: 0;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
+    padding: 0;
 }
 
 .note-details.visible {
-    height: auto;
+    height: 32px; /* Exact height for one line + padding */
     opacity: 1;
     margin-top: 8px;
     pointer-events: auto;
+    padding: 0;
 }
 
 .note-description {
@@ -130,7 +134,7 @@ li.note-container:hover textarea {
     left: -24px;
     top: 0;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s linear;
     background: url('/static/visual/img/6dots.png') center no-repeat;
     background-size: 8px 13px;
 }
@@ -147,7 +151,7 @@ li.note-container:hover textarea {
     background: url('/static/visual/img/6dots.png') center no-repeat;
     background-size: 8px 13px;
     border-radius: 2px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s linear;
 }
 
 .menu-trigger:hover {
@@ -180,7 +184,7 @@ li.note-container:hover textarea {
     align-items: center;
     padding: 6px 12px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s linear;
     white-space: nowrap;
 }
 
