@@ -58,14 +58,14 @@ ul {
 }
 
 /* Individual note container */
-li.note-container {
+.note-container {
     width: 499px;
     min-height: 70px;
     padding: 16px 16px;
     margin: 0 auto;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 li.note-container:hover,
@@ -95,6 +95,19 @@ li.note-container:hover textarea {
     line-height: 12px;
     color: #4f4f4f;
     font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.note-details.visible {
+    height: auto;
+    opacity: 1;
+    margin-top: 8px;
+    pointer-events: auto;
 }
 
 .note-description {

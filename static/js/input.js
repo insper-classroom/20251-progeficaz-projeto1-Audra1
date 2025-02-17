@@ -112,14 +112,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show details on note click
         note.addEventListener('click', (e) => {
             if (e.target === titleArea || e.target === detailsArea) {
-                detailsArea.style.display = 'block';
+                detailsArea.classList.add('visible');
             }
         });
 
         // Hide empty details when clicking outside
         document.addEventListener('click', (e) => {
             if (!note.contains(e.target) && !detailsArea.value.trim()) {
-                detailsArea.style.display = 'none';
+                detailsArea.classList.remove('visible');
             }
         });
     });

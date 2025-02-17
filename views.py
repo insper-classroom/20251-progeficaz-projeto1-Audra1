@@ -12,7 +12,7 @@ def get_notes():
                 id=note[0],
                 title=note[1], 
                 details=note[2],
-                details_display='none' if not note[2].strip() else 'block'
+                details_class='visible' if note[2].strip() else ''
             ) for note in notes
         ]
     return '\n'.join(notes_li)
