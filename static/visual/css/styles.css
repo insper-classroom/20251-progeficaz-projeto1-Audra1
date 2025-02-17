@@ -2,6 +2,7 @@
     width: 499px;
     margin: 50px auto;
     position: relative;
+    fill: #fbfbfb;
 }
 
 .main-container {
@@ -63,6 +64,18 @@ li.note-container {
     margin: 0 auto;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+li.note-container:hover,
+li.note-container:hover textarea {
+    background-color: #FBFBFB;
+}
+
+.note-title,
+.note-details {
+    background-color: transparent;
+    transition: background-color 0.2s ease;
 }
 
 .note-content {
@@ -84,4 +97,60 @@ li.note-container {
 
 .note-description {
     font-size: 12px;
+}
+
+/* Note container and menu area */
+.note-wrapper {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 24px; /* Space for menu icon */
+}
+
+.menu-trigger {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 0;
+    top: 16px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    background: url('/static/visual/img/6dots.png') center no-repeat;
+    background-size: 16px;
+}
+
+.note-wrapper:hover .menu-trigger {
+    opacity: 1;
+}
+
+/* Delete menu popup */
+.delete-menu {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 2;
+}
+
+.delete-option {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-option:hover {
+    background-color: #FBFBFB;
+}
+
+.delete-option img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }

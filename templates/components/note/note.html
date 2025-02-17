@@ -1,6 +1,15 @@
-<li class="note-container" data-note-id="{id}">
-    <div class="note-content">
-        <textarea class="note-title" placeholder="Title">{title}</textarea>
-        <textarea class="note-details" placeholder="Description">{details}</textarea>
+<div class="note-wrapper">
+    <div class="menu-trigger"></div>
+    <div class="delete-menu">
+        <div class="delete-option">
+            <img src="{{ url_for('static', filename='visual/img/trash.svg') }}" alt="Delete">
+            <span>Delete</span>
+        </div>
     </div>
-</li>
+    <li class="note-container" data-note-id="{id}">
+        <div class="note-content">
+            <textarea class="note-title" placeholder="Title">{title}</textarea>
+            <textarea class="note-details" placeholder="Description">{details}</textarea>
+        </div>
+    </li>
+</div>

@@ -109,4 +109,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    // Add after existing code inside DOMContentLoaded
+    document.querySelectorAll('.menu-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const menu = trigger.nextElementSibling;
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.delete-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+    });
+
+    // Handle delete option
+    document.querySelectorAll('.delete-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const noteId = option.closest('.note-wrapper').querySelector('.note-container').dataset.noteId;
+            // TODO: Add delete functionality when endpoint is ready
+            console.log('Delete note:', noteId);
+        });
+    });
 });
