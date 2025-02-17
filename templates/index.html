@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Get-it</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='visual/css/reset.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='visual/css/styles.css') }}">
+</head>
+<body>  
+    <div class="main-container"> 
+      <div class="input-container">
+        <div class="input-box"></div>
+          <textarea id="title-input" type="text" placeholder="Press Enter for new note"></textarea>
+          <textarea id="description-input" type="text" placeholder="Description... Enter to dismiss"></textarea>
+      </div>
+       
+
+       <ul>
+        {{ notes|safe }}
+      </ul>
+      <script src="{{ url_for('static', filename='js/input.js') }}"></script>
+    </div>
+
+</body>
+</html>

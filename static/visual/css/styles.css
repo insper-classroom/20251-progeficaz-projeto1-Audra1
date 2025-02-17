@@ -1,0 +1,64 @@
+.input-container {
+    width: 600px;
+    margin: 50px 0;
+    position: relative;
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box {
+    border: 1px solid #000;
+    border-radius: 4px;
+    width: 200px;
+    height: 100px;
+}
+
+#title-input, #description-input {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    background: transparent;
+}
+
+#description-input {
+    display: none;
+    margin-top: 8px;
+}
+
+/* Note list container */
+ul {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+/* Individual note container */
+li {
+    width: 499px;
+    height: 70px;
+    padding: 16px;
+    margin: 0 auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Note title */
+li h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+/* Note description */
+li p {
+    font-size: 14px;
+    color: #4f4f4f;
+}
+
