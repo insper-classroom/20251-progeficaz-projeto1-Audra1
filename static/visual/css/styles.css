@@ -76,3 +76,12 @@ li p {
     color: #4f4f4f;
 }
 
+.note-title {
+
+    font-size: 17px;
+
+}
+
+.note-description {
+    font-size: 14px;
+}
