@@ -107,11 +107,11 @@ li.note-container:hover textarea {
 }
 
 .note-details.visible {
-    height: 32px; /* Exact height for one line + padding */
+    height: 20px;
     opacity: 1;
     margin-top: 8px;
     pointer-events: auto;
-    padding: 0;
+    padding: 4px 0;
 }
 
 .note-description {
