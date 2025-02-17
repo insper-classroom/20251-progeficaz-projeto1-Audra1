@@ -108,6 +108,18 @@ li.note-container:hover textarea {
     margin: 0 auto;
 }
 
+.menu-trigger-area {
+    width: 24px;
+    height: 100%;
+    position: absolute;
+    left: -24px;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background: url('/static/visual/img/6dots.png') center no-repeat;
+    background-size: 8px 13px;
+}
+
 .menu-trigger {
     width: 14px;
     height: 19px;
@@ -127,7 +139,8 @@ li.note-container:hover textarea {
     background-color: rgba(173, 216, 230, 0.3);
 }
 
-.note-wrapper:hover .menu-trigger {
+.note-wrapper:hover .menu-trigger,
+.note-wrapper:hover .menu-trigger-area {
     opacity: 1;
 }
 
