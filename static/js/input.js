@@ -17,9 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
     titleInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            document.querySelector('.input-container').style.height = '70px';
-            descriptionInput.style.display = 'block';
-            descriptionInput.focus();
+            const container = document.querySelector('.input-container');
+            const description = document.getElementById('description-input');
+            
+            // Set initial height for description
+            description.style.height = '31px';
+            container.style.height = '70px';
+            
+            // Show description after container expands
+            setTimeout(() => {
+                description.style.display = 'block';
+                description.focus();
+            }, 50);
         }
     });
 
