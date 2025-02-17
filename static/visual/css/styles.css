@@ -31,11 +31,12 @@
     position: relative;
     z-index: 1;
     height: 39px;
+    font-family: 'Inria Serif', serif;
 }
 
 #description-input {
     width: 100%;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
     padding: 9px 16px 9px 16px;
     background: transparent;
@@ -55,33 +56,32 @@ ul {
 }
 
 /* Individual note container */
-li {
+li.note-container {
     width: 499px;
-    height: 70px;
-    padding: 16px;
+    min-height: 70px;
+    padding: 16px 16px;
     margin: 0 auto;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
 }
 
-/* Note title */
-li h3 {
-    font-size: 17px;
-    margin-bottom: 4px;
-}
-
-/* Note description */
-li p {
-    font-size: 14px;
-    color: #4f4f4f;
+.note-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .note-title {
-
+    font-family: 'Inria Serif', serif;
     font-size: 17px;
+    line-height: 23px;
+}
 
+.note-details {
+    font-size: 12px;
+    line-height: 12px;
+    color: #4f4f4f;
 }
 
 .note-description {
-    font-size: 14px;
+    font-size: 12px;
 }
