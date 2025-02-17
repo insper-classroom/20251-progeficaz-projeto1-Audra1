@@ -109,17 +109,22 @@ li.note-container:hover textarea {
 }
 
 .menu-trigger {
-    width: 8px;
-    height: 13px;
+    width: 14px;
+    height: 19px;
     position: absolute;
-    left: -16px;
+    left: -19px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0;
-    transition: opacity 0.2s ease;
     cursor: pointer;
     background: url('/static/visual/img/6dots.png') center no-repeat;
     background-size: 8px 13px;
+    border-radius: 1px;
+    transition: background-color 0.2s ease;
+}
+
+.menu-trigger:hover {
+    background-color: rgba(173, 216, 230, 0.3);
 }
 
 .note-wrapper:hover .menu-trigger {
