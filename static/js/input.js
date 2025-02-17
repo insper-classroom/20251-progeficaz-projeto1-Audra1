@@ -64,4 +64,42 @@ document.addEventListener('DOMContentLoaded', function() {
             // Could add user feedback here
         });
     }
+
+    // Debounce function to limit API calls
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Auto-save function
+    const saveNote = debounce((noteId, title, details) => {
+        fetch(`/update/${noteId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title, details })
+        })
+        .catch(error => console.error('Error saving note:', error));
+    }, 500);  // 500ms delay
+
+    // Add event listeners to existing notes
+    document.querySelectorAll('.note-container').forEach(note => {
+        const noteId = note.dataset.noteId;
+        const titleArea = note.querySelector('.note-title');
+        const detailsArea = note.querySelector('.note-details');
+
+        [titleArea, detailsArea].forEach(textarea => {
+            textarea.addEventListener('input', () => {
+                saveNote(noteId, titleArea.value, detailsArea.value);
+            });
+        });
+    });
 });

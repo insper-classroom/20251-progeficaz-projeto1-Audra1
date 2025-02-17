@@ -1,12 +1,19 @@
 from utils import load_data, load_template, save_data
 import os
+from database import get_db
 
 def get_notes():
     note_template = load_template('components/note/note.html')
-    notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
-    ]
+    with get_db() as db:
+        db.execute('SELECT id, title, details FROM notes ORDER BY created_at DESC')
+        notes = db.fetchall()
+        notes_li = [
+            note_template.format(
+                id=note[0],
+                title=note[1], 
+                details=note[2]
+            ) for note in notes
+        ]
     return '\n'.join(notes_li)
 
 def index():
@@ -14,22 +21,11 @@ def index():
 
 
 def submit(titulo, detalhes):
-    # Create the note dictionary with the actual variables (not string literals)
-    note = {
-        "titulo": titulo,
-        "detalhes": detalhes
-    }
-
-    # Load existing notes
-    notes = load_data('notes.json')
-    
-    # Append the new note
-    notes.append(note)
-    
-    # Save the updated notes
-    save_data('notes.json', notes)
-
-    return
+    with get_db() as db:
+        db.execute(
+            'INSERT INTO notes (title, details) VALUES (?, ?)',
+            (titulo, detalhes)
+        )
 
 
 
