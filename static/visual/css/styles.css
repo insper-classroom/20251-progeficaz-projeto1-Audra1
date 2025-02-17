@@ -28,14 +28,15 @@
 #title-input {
     width: 100%;
     font-size: 17px;
-    line-height: 17px;
-    height: 17px;
-    padding: 0 16px;
+    line-height: 10px;
+    height: 39px;
+    padding: 12px 16px 0px 16px;
     background: transparent;
     position: relative;
     z-index: 1;
     font-family: 'Inria Serif', serif;
-    margin: 11px 0;  /* (39px - 17px) / 2 = 11px top and bottom */
+    margin: 0;
+    overflow: hidden;
 }
 
 #description-input {
@@ -43,13 +44,13 @@
     font-size: 12px;
     line-height: 12px;
     height: 12px;
-    padding: 0 16px;
+    padding: 0px 16px;
     background: transparent;
     display: none;
     position: relative;
     z-index: 1;
     font-family: 'Inter', sans-serif;
-    margin: 8px 0;
+    margin: 0;
 }
 
 /* Note list container */
@@ -69,7 +70,7 @@ ul {
     padding: 16px 16px;
     margin: 0 auto;
     border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    border-radius: 7px;
     transition: all 0.3s linear;
 }
 

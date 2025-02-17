@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.input-container').style.height = '70px';
             descriptionInput.style.display = 'block';
             descriptionInput.focus();
-            titleInput.style.margin = '8px 0'; // Remove center alignment
         }
     });
 
