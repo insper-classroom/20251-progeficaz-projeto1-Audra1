@@ -108,6 +108,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 saveNote(noteId, titleArea.value, detailsArea.value);
             });
         });
+
+        // Show details on note click
+        note.addEventListener('click', (e) => {
+            if (e.target === titleArea || e.target === detailsArea) {
+                detailsArea.style.display = 'block';
+            }
+        });
+
+        // Hide empty details when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!note.contains(e.target) && !detailsArea.value.trim()) {
+                detailsArea.style.display = 'none';
+            }
+        });
     });
 
     // Add after existing code inside DOMContentLoaded

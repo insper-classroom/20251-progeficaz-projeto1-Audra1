@@ -11,7 +11,8 @@ def get_notes():
             note_template.format(
                 id=note[0],
                 title=note[1], 
-                details=note[2]
+                details=note[2],
+                details_display='none' if not note[2].strip() else 'block'
             ) for note in notes
         ]
     return '\n'.join(notes_li)

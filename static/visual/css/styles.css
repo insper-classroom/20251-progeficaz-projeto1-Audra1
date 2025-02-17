@@ -180,3 +180,7 @@ li.note-container:hover textarea {
     height: 16px;
     margin-right: 8px;
 }
+
+.note-details:focus {
+    display: block !important;
+}
