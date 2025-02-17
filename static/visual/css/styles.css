@@ -2,7 +2,8 @@
     width: 499px;
     margin: 50px auto;
     position: relative;
-    fill: #fbfbfb;
+    height: 39px;
+    transition: height 0.2s linear;
 }
 
 .main-container {
@@ -16,35 +17,39 @@
 .input-box {
     position: absolute;
     width: 100%;
-    height: 39px;
+    height: 100%;
     border: 1px solid #e0e0e0;
     border-radius: 7px;
-    transition: height 0.2s linear;
     background: white;
+    display: flex;
+    flex-direction: column;
 }
 
 #title-input {
     width: 100%;
     font-size: 17px;
-    line-height: 9px;
-    padding: 16px 16px 0px 16px;
+    line-height: 17px;
+    height: 17px;
+    padding: 0 16px;
     background: transparent;
     position: relative;
     z-index: 1;
-    height: 39px;
     font-family: 'Inria Serif', serif;
+    margin: 11px 0;  /* (39px - 17px) / 2 = 11px top and bottom */
 }
 
 #description-input {
     width: 100%;
     font-size: 12px;
-    line-height: 20px;
-    padding: 9px 16px 9px 16px;
+    line-height: 12px;
+    height: 12px;
+    padding: 0 16px;
     background: transparent;
     display: none;
     position: relative;
     z-index: 1;
     font-family: 'Inter', sans-serif;
+    margin: 8px 0;
 }
 
 /* Note list container */
@@ -102,7 +107,7 @@ li.note-container:hover textarea {
                 opacity 0.2s linear,
                 margin-top 0.2s linear;
     height: 0;
-    margin-top: 0;
+    margin-top: 9px;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;

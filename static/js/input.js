@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
     titleInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            inputBox.style.minHeight = '96px'; // Increase box height
+            document.querySelector('.input-container').style.height = '70px';
             descriptionInput.style.display = 'block';
             descriptionInput.focus();
+            titleInput.style.margin = '8px 0'; // Remove center alignment
         }
     });
 
@@ -32,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
             titleInput.value = '';
             descriptionInput.value = '';
             descriptionInput.style.display = 'none';
-            inputBox.style.minHeight = '48px';
+            document.querySelector('.input-container').style.height = '39px';
+            titleInput.style.margin = '11px 0'; // Restore center alignment
             titleInput.focus();
         }
     });
