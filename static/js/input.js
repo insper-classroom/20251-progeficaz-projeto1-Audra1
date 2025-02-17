@@ -170,4 +170,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    // Add this function at the start of your DOMContentLoaded
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+
+    // Add event listeners for all textareas (both input and notes)
+    document.querySelectorAll('textarea').forEach(textarea => {
+        textarea.addEventListener('input', () => {
+            autoResize(textarea);
+        });
+        
+        // Initial resize
+        autoResize(textarea);
+    });
 });
