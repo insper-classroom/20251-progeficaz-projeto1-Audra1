@@ -87,7 +87,10 @@ li.note-container:hover textarea {
 .note-title {
     font-family: 'Inria Serif', serif;
     font-size: 17px;
-    line-height: 23px;
+    line-height: 17px;
+    height: 17px;
+    padding: 0;
+    margin: 0;
 }
 
 .note-details {
@@ -107,11 +110,10 @@ li.note-container:hover textarea {
 }
 
 .note-details.visible {
-    height: 20px;
+    height: 12px;
     opacity: 1;
     margin-top: 8px;
     pointer-events: auto;
-    padding: 4px 0;
 }
 
 .note-description {
