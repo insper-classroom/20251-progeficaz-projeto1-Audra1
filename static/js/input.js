@@ -20,12 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.input-container');
             const description = document.getElementById('description-input');
             
-            // Force the container height first
             container.style.height = '70px';
-            
-            // Force the description height and display
-            description.style.height = '31px';
-            description.style.display = 'block';
+            description.classList.add('visible');
             description.focus();
         }
     });
@@ -35,12 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             submitNote(titleInput.value, descriptionInput.value);
             
-            // Reset the form and box
             titleInput.value = '';
             descriptionInput.value = '';
-            descriptionInput.style.display = 'none';
+            descriptionInput.classList.remove('visible');
             document.querySelector('.input-container').style.height = '39px';
-            titleInput.style.margin = '11px 0'; // Restore center alignment
             titleInput.focus();
         }
     });

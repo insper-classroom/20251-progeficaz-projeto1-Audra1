@@ -42,9 +42,9 @@
 #description-input {
     width: 100%;
     font-size: 12px;
-    line-height: 12px;
-    height: 31px;
-    padding: 8px 20px;
+    line-height: 16px;
+    height: 0;
+    padding: 0 20px;
     background: transparent;
     display: none;
     position: relative;
@@ -52,6 +52,15 @@
     font-family: 'Inter', sans-serif;
     margin: 0;
     box-sizing: border-box;
+    transition: height 0.2s linear,
+                padding 0.2s linear;
+}
+
+#description-input.visible {
+    height: auto;
+    min-height: 31px;
+    padding: 8px 20px;
+    display: block;
 }
 
 /* Note list container */
@@ -67,12 +76,32 @@ ul {
 /* Individual note container */
 .note-container {
     width: 499px;
-    min-height: 70px;
-    padding: 16px 20px;
+    min-height: 39px;
+    padding: 16px 20px 0px 16px;
     margin: 0 auto;
+    border: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.note-container::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 5px;
+    left: 0;
+    right: 0;
     border: 1px solid #e0e0e0;
     border-radius: 7px;
-    transition: all 0.3s linear;
+    pointer-events: none;
+}
+
+.note-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transform: translateY(-2px);
 }
 
 li.note-container:hover,
@@ -84,11 +113,6 @@ li.note-container:hover textarea {
 .note-details {
     background-color: transparent;
     transition: background-color 0.2s linear;
-}
-
-.note-content {
-    display: flex;
-    flex-direction: column;
 }
 
 .note-title {
@@ -108,21 +132,26 @@ li.note-container:hover textarea {
     color: #4f4f4f;
     font-family: 'Inter', sans-serif;
     transition: opacity 0.2s linear,
-                margin-top 0.2s linear;
-    min-height: 12px;
-    height: auto;
-    margin-top: 9px;
+                margin-top 0.2s linear,
+                height 0.2s linear;
+    height: 0;
+    margin-top: 0;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
     padding: 0;
+    position: absolute;
+    visibility: hidden;
 }
 
 .note-details.visible {
-    height: 12px;
+    height: auto;
+    min-height: 12px;
+    margin-top: 6px;
     opacity: 1;
-    margin-top: 8px;
     pointer-events: auto;
+    position: relative;
+    visibility: visible;
 }
 
 .note-description {
