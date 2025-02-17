@@ -43,7 +43,7 @@
     width: 100%;
     font-size: 12px;
     line-height: 12px;
-    min-height: 31px;
+    height: 31px;
     padding: 8px 16px;
     background: transparent;
     display: none;
@@ -51,6 +51,7 @@
     z-index: 1;
     font-family: 'Inter', sans-serif;
     margin: 0;
+    box-sizing: border-box;
 }
 
 /* Note list container */

@@ -20,15 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.input-container');
             const description = document.getElementById('description-input');
             
-            // Set initial height for description
-            description.style.height = '31px';
+            // Force the container height first
             container.style.height = '70px';
             
-            // Show description after container expands
-            setTimeout(() => {
-                description.style.display = 'block';
-                description.focus();
-            }, 50);
+            // Force the description height and display
+            description.style.height = '31px';
+            description.style.display = 'block';
+            description.focus();
         }
     });
 
@@ -50,8 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Auto-resize textareas as user types
     [titleInput, descriptionInput].forEach(textarea => {
         textarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
+            if (this.id === 'description-input') {
+                const scrollHeight = Math.max(31, this.scrollHeight);
+                this.style.height = scrollHeight + 'px';
+            }
         });
     });
 
