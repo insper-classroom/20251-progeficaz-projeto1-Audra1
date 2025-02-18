@@ -113,15 +113,36 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error saving note:', error));
     }, 500);  // 500ms delay
 
-    // Add event listeners to existing notes
+    // Add this function at the start of your file
+    function saveNoteImmediate(noteId, title, details) {
+        const actualNoteId = noteId.split('/').pop();
+        
+        return fetch(`/update/${actualNoteId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title, details })
+        }).catch(error => console.error('Error saving note:', error));
+    }
+
+    // Modify the existing event listeners section
     document.querySelectorAll('.note-container').forEach(note => {
         const noteId = note.dataset.noteId;
         const titleArea = note.querySelector('.note-title');
         const detailsArea = note.querySelector('.note-details');
 
+        // Save while typing (debounced)
         [titleArea, detailsArea].forEach(textarea => {
             textarea.addEventListener('input', () => {
                 saveNote(noteId, titleArea.value, detailsArea.value);
+            });
+        });
+
+        // Save before page unload if there are unsaved changes
+        [titleArea, detailsArea].forEach(textarea => {
+            textarea.addEventListener('blur', () => {
+                saveNoteImmediate(noteId, titleArea.value, detailsArea.value);
             });
         });
 
@@ -247,6 +268,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Error deleting space:', error);
                     alert('Failed to delete space. Please try again.');
                 });
+            }
+        });
+    });
+
+    // Add this event listener at the end of your DOMContentLoaded
+    window.addEventListener('beforeunload', (e) => {
+        const unsavedNotes = document.querySelectorAll('.note-container');
+        
+        unsavedNotes.forEach(note => {
+            const noteId = note.dataset.noteId;
+            const titleArea = note.querySelector('.note-title');
+            const detailsArea = note.querySelector('.note-details');
+
+            if (titleArea && detailsArea) {
+                saveNoteImmediate(noteId, titleArea.value, detailsArea.value);
             }
         });
     });
