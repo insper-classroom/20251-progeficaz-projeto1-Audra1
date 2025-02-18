@@ -30,7 +30,7 @@
     font-size: 17px;
     line-height: 17px;
     height: 17px;
-    padding: 16px 20px;
+    padding: 16px 20px 0 20px;
     background: transparent;
     position: relative;
     z-index: 1;
@@ -44,7 +44,7 @@
     font-size: 12px;
     line-height: 16px;
     height: 0;
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
     background: transparent;
     display: none;
     position: relative;
@@ -59,8 +59,10 @@
 #description-input.visible {
     height: auto;
     min-height: 31px;
-    padding: 8px 20px;
+    padding: 0px 20px 20px 20px;
     display: block;
+    position: relative;
+    top: -10px;
 }
 
 /* Note list container */
@@ -135,7 +137,7 @@ li.note-container:hover textarea {
                 margin-top 0.2s linear,
                 height 0.2s linear;
     height: 0;
-    margin-top: 0;
+    margin-top: -10px;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
@@ -147,7 +149,7 @@ li.note-container:hover textarea {
 .note-details.visible {
     height: auto;
     min-height: 12px;
-    margin-top: 6px;
+    margin-top: -4px;
     opacity: 1;
     pointer-events: auto;
     position: relative;
