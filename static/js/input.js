@@ -286,4 +286,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Add this inside your DOMContentLoaded event listener
+    const spaceTitle = document.querySelector('.space-title');
+
+    spaceTitle.addEventListener('blur', () => {
+        const newName = spaceTitle.textContent.trim();
+        if (newName) {
+            fetch('/update-space-name', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    space_id: getCurrentSpace().id,
+                    name: newName
+                })
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to update space name');
+                window.history.pushState({}, '', `/${encodeURIComponent(newName)}`);
+            })
+            .catch(error => console.error('Error updating space name:', error));
+        }
+    });
 });

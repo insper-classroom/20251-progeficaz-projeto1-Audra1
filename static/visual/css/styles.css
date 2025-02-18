@@ -1,17 +1,18 @@
 .input-container {
     width: 499px;
-    margin: 50px auto;
+    margin: 0px 50px 50px 50px;
     position: relative;
     height: 39px;
     transition: height 0.2s linear;
 }
 
 .main-container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 120px;
 }
 
 .input-box {
@@ -27,14 +28,14 @@
 
 #title-input {
     width: 100%;
-    font-size: 17px;
-    line-height: 17px;
-    height: 17px;
+    font-size: 15px;
+    line-height: 15px;
+    height: 15px;
     padding: 11px 20px 11px 20px;
     background: transparent;
     position: relative;
     z-index: 1;
-    font-family: 'Inria Serif', serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     overflow: hidden;
 }
@@ -71,7 +72,7 @@ ul {
     max-width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 10px;
     list-style: none;
 }
 
@@ -79,7 +80,7 @@ ul {
 .note-container {
     width: 499px;
     min-height: 39px;
-    padding: 16px 20px 0px 16px;
+    padding: 17px 20px 0px 16px;
     margin: 0 auto;
     border: none;
     display: flex;
@@ -118,8 +119,8 @@ li.note-container:hover textarea {
 }
 
 .note-title {
-    font-family: 'Inria Serif', serif;
-    font-size: 17px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
     line-height: 20px;
     min-height: 17px;
     height: auto;
@@ -137,7 +138,7 @@ li.note-container:hover textarea {
                 margin-top 0.2s linear,
                 height 0.2s linear;
     height: 0;
-    margin-top: -10px;
+    margin-top: -20px;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
@@ -149,7 +150,7 @@ li.note-container:hover textarea {
 .note-details.visible {
     height: auto;
     min-height: 12px;
-    margin-top: -4px;
+    margin-top: -12px;
     opacity: 1;
     pointer-events: auto;
     position: relative;
@@ -329,16 +330,6 @@ li.note-container:hover textarea {
     overflow-y: auto;
 }
 
-/* Update existing main-container */
-.main-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-}
-
 .add-space-btn {
     width: 24px;
     height: 24px;
@@ -356,4 +347,23 @@ li.note-container:hover textarea {
 
 .add-space-btn:hover {
     background-color: #f5f5f5;
+}
+
+.space-title {
+    font-family: 'Inria Serif', serif;
+    font-size: 34px;
+    color: #333;
+    margin-bottom: 0px;
+    width: 499px;
+    margin-top: 50px;
+    margin: 0 auto 30px;
+    text-align: left;
+    outline: none;
+    position: relative;
+    cursor: text;
+}
+
+.space-title:empty:before {
+    content: 'Untitled';
+    color: #999;
 }

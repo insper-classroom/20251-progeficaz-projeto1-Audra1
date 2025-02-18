@@ -85,5 +85,18 @@ def delete_space(space_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/update-space-name', methods=['POST'])
+def update_space_name():
+    data = request.get_json()
+    space_id = data.get('space_id')
+    new_name = data.get('name')
+    
+    try:
+        with get_db() as db:
+            db.execute('UPDATE spaces SET name = ? WHERE id = ?', (new_name, space_id))
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8001, debug=True)
