@@ -10,19 +10,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
 <body>  
-    <div class="main-container"> 
-      <div class="input-container">
-        <div class="input-box"></div>
-          <textarea id="title-input" type="text" placeholder="Press Enter for new note"></textarea>
-          <textarea id="description-input" type="text" placeholder="Description... Enter to dismiss"></textarea>
-      </div>
-       
-
-       <ul>
-        {{ notes|safe }}
-      </ul>
-      <script src="{{ url_for('static', filename='js/input.js') }}"></script>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>Spaces</h1>
+            </div>
+            <div class="sidebar-content">
+                <ul class="space-list">
+                    <li class="space-item active">Cdados</li>
+                    <li class="space-item">Cálculo</li>
+                    <li class="space-item">Programação Eficaz</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="main-container"> 
+                <div class="input-container">
+                    <div class="input-box"></div>
+                    <textarea id="title-input" type="text" placeholder="Press Enter for new note"></textarea>
+                    <textarea id="description-input" type="text" placeholder="Description... Enter to dismiss"></textarea>
+                </div>
+                <ul>
+                    {{ notes|safe }}
+                </ul>
+            </div>
+        </div>
     </div>
-
+    <script src="{{ url_for('static', filename='js/input.js') }}"></script>
 </body>
 </html>
