@@ -14,12 +14,19 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <h1>Spaces</h1>
+                <button class="add-space-btn">+</button>
             </div>
             <div class="sidebar-content">
                 <ul class="space-list">
-                    <li class="space-item active">Cdados</li>
-                    <li class="space-item">Cálculo</li>
-                    <li class="space-item">Programação Eficaz</li>
+                    {% for space in spaces %}
+                        <li class="space-item {% if space[1] == current_space %}active{% endif %}" 
+                            data-space-id="{{ space[0] }}">
+                            {{ space[1] }}
+                            {% if space[1] != 'default' %}
+                                <button class="delete-space-btn">×</button>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

@@ -49,17 +49,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    function getCurrentSpace() {
+        const activeSpace = document.querySelector('.space-item.active');
+        return {
+            id: activeSpace.dataset.spaceId,
+            name: activeSpace.childNodes[0].textContent.trim()
+        };
+    }
+
     function submitNote(title, description) {
         if (!title.trim()) {
-            return; // Don't submit if title is empty
+            return;
         }
-
+        
+        const space = getCurrentSpace();
+        
         fetch('/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: `titulo=${encodeURIComponent(title)}&detalhes=${encodeURIComponent(description)}`
+            body: `space_id=${encodeURIComponent(space.id)}&space=${encodeURIComponent(space.name)}&titulo=${encodeURIComponent(title)}&detalhes=${encodeURIComponent(description)}`
         })
         .then(response => {
             if (!response.ok) {
@@ -72,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error submitting note:', error);
-            // Could add user feedback here
         });
     }
 
@@ -179,5 +188,63 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Initial resize
         autoResize(textarea);
+    });
+
+    // Space navigation
+    document.querySelectorAll('.space-item').forEach(item => {
+        item.addEventListener('click', () => {
+            // Get only the text content, excluding the delete button
+            const spaceName = item.childNodes[0].textContent.trim();
+            window.location.href = `/${encodeURIComponent(spaceName)}`;
+        });
+    });
+
+    // Add new space
+    const addSpaceBtn = document.querySelector('.add-space-btn');
+    addSpaceBtn.addEventListener('click', () => {
+        const spaceName = prompt('Enter space name:');
+        if (spaceName && spaceName.trim()) {
+            fetch('/create-space', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: spaceName.trim() })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Space creation failed');
+                }
+                window.location.href = `/${encodeURIComponent(spaceName.trim())}`;
+            })
+            .catch(error => {
+                console.error('Error creating space:', error);
+                alert('Failed to create space. Please try again.');
+            });
+        }
+    });
+
+    // Add this inside your DOMContentLoaded event listener
+    document.querySelectorAll('.delete-space-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const spaceItem = btn.parentElement;
+            const spaceId = spaceItem.dataset.spaceId;
+            const spaceName = spaceItem.textContent.trim().slice(0, -1); // Remove the × button text
+            
+            if (confirm(`Are you sure you want to delete the space "${spaceName}" and all its notes?`)) {
+                fetch(`/delete-space/${spaceId}`, {
+                    method: 'POST'
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    window.location.href = '/';
+                })
+                .catch(error => {
+                    console.error('Error deleting space:', error);
+                    alert('Failed to delete space. Please try again.');
+                });
+            }
+        });
     });
 });
