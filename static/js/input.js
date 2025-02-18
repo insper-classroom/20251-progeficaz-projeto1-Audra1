@@ -100,7 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Auto-save function
     const saveNote = debounce((noteId, title, details) => {
-        fetch(`/update/${noteId}`, {
+        // Extract the actual note ID from the composite ID (space_id/note_id)
+        const actualNoteId = noteId.split('/').pop();
+        
+        fetch(`/update/${actualNoteId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
