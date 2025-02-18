@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, render_template, request, redirect, jsonify, send_from_directory
 import views
 from database import init_db, get_db
+import os
 
 
 app = Flask(__name__)
@@ -11,10 +12,18 @@ app.static_folder = 'static'
 # Initialize database when app starts
 init_db()
 
+# Add this route before the space routes
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static', 'visual', 'img'),
+                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 # home 
 @app.route('/')
 @app.route('/<space_name>')
 def index(space_name='default'):
+    if space_name == 'favicon.ico':
+        return redirect('/')
     space_id = views.get_or_create_space(space_name)
     spaces = views.get_spaces()
     return render_template('index.html', 
