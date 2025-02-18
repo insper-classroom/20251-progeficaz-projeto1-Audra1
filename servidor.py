@@ -52,10 +52,12 @@ def update_note(note_id):
         )
     return jsonify({'status': 'success'})
 
-@app.route('/delete/<int:note_id>', methods=['POST'])
+@app.route('/delete/<path:note_id>', methods=['POST'])
 def delete_note(note_id):
-    views.delete_note(note_id)
-    return redirect('/')
+    # Split the composite ID into space_id and note_id
+    space_id, actual_note_id = map(int, note_id.split('/'))
+    views.delete_note(actual_note_id)
+    return redirect(f'/{request.referrer.split("/")[-1]}')
 
 @app.route('/create-space', methods=['POST'])
 def create_space():
